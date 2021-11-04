@@ -16,9 +16,10 @@ Dashboard visualizing [adult behavioral risks](https://www.cdc.gov/brfss/) track
 [MSU's Correlates of State Policy](https://cspp.ippsr.msu.edu/) dataset to detect potential interventions.
 
 https://projectmenrva.herokuapp.com
+
 https://github.com/bjo/TDI_capstone_webapp
 
-Makes use of:
+Technical skills:
 - Wrangling of >15Gb of data (primarily using pandas)
 - Stat/ML concepts (using scikit-learn, statsmodels)
 - Flask deployment on Heroku
