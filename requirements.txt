@@ -1,26 +1,8 @@
--r requirements/prod.txt
+Flask==2.0.2
+click==8.0.3
+colorama==0.4.4
+itsdangerous==2.0.1
+Jinja2==3.0.2
+MarkupSafe==2.0.1
+Werkzeug==2.0.2
 
-Django==1.7
-PyRSS2Gen==1.0.0
-South==1.0
-Twisted==12.2.0
-altgraph==0.10.1
-bdist-mpkg==0.4.4
-dj-database-url==0.3.0
-dj-static==0.0.6
-django-registration==1.0
-django-toolbelt==0.0.1
-gunicorn==19.1.1
-macholib==1.5
-psycopg2==2.5.4
-py2app==0.7.1
-pyOpenSSL==0.13
-python-dateutil==1.5
-pytz==2012d
-requests==2.4.1
-static3==0.5.1
-stripe==1.19.0
-virtualenv==1.11.6
-wsgiref==0.1.2
-xattr==0.6.4
-zope.interface==3.8.0

@@ -1,1 +1,1 @@
-web: gunicorn brian_zone.wsgi
+web: gunicorn --pythonpath brian_zone app:app
