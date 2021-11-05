@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <link rel="stylesheet" href="../../static/sidebars.css">
+{% endblock %}
+
+{% block body %}
+<!-- TODO: These will be converted from manual entries to DB entries with a proper post type -->
+<main>
+    <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+        <span class="fs-5 fw-semibold">Python recipes</span>
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#a_collapse" aria-expanded="true">
+              Collections
+            </button>
+            <div class="collapse show" id="a_collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#collections_ordereddict" class="link-dark rounded">OrderedDict</a></li>
+                <li><a href="#collections_ordereddict" class="link-dark rounded">Itertools</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#b_collapse" aria-expanded="false">
+              Graph
+            </button>
+            <div class="collapse" id="b_collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#graph_bfs" class="link-dark rounded">Breadth-first search (BFS)</a></li>
+                <li><a href="#graph_bfs" class="link-dark rounded">Depth-first Search (DFS)</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#c_collapse" aria-expanded="false">
+              Other algorithms
+            </button>
+            <div class="collapse" id="c_collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#algo_mapreduce" class="link-dark rounded">MapReduce algorithm</a></li>
+                <li><a href="#algo_mapreduce" class="link-dark rounded">Quicksort</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    <div class="content" style="width: auto;">
+        <div id="collections_ordereddict">
+        <h3>OrderedDict</h3>
+        <p>
+            The collections module provides many useful data structures. One of them is OrderedDict:
+        </p>
+        <pre><code>
+        from collections import OrderedDict
+        import sys
+        n = int(sys.stdin.readline())
+
+        d = OrderedDict()
+        for _ in range(n):
+            word = sys.stdin.readline().strip()
+            if word in d:
+                d[word] += 1
+            else:
+                d[word] = 1
+
+        print(len(d))
+        print(*d.values())
+        </code></pre>
+        </div>
+
+        <div id="graph_bfs">
+        <h3>Breadth-First Search</h3>
+        <p>Breadth-First Search (BFS) framework uses a queue data structure to reach nodes that are the closest to the root node first</p>
+        <pre><code>
+        from collections import defaultdict, deque
+
+        def bfs(n, m, edges, s):
+            graph = defaultdict(list)
+            for node1, node2 in edges:
+                graph[node1].append(node2)
+                graph[node2].append(node1)
+
+            dists = defaultdict(lambda: -1)
+            dists[s] = 0
+            queue = deque([s])
+            while queue:
+                v = queue.popleft()
+                for neighbor in graph[v]:
+                    if dists[neighbor] < 0:
+                        queue.append(neighbor)
+                        dists[neighbor] = dists[v] + 6
+            return [dists[i] for i in range(1, n+1) if i != s]
+        </code></pre>
+        </div>
+
+        <div id="algo_mapreduce">
+        <h3>MapReduce</h3>
+        <p>MapReduce is a framework that allows for parallel computation of summary statistics.</p>
+        <pre><code>
+        from functools import reduce
+        def getMinimumCost(k, c):
+            reduce(lambda acc, val: acc + val, map(lambda x: (x[1] * (1 + x[0]//k)), enumerate(sorted(c, reverse = True))))
+        </code></pre>
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}

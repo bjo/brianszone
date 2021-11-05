@@ -9,7 +9,6 @@ from flask import Flask, render_template, request, redirect, url_for
 # Create Flask webapp object
 app = Flask(__name__)
 
-
 # APIKEY = os.environ.get('APIKEY')
 
 # decorator syntax - associated a URL with the python function
@@ -18,6 +17,12 @@ app = Flask(__name__)
 def entry_page() -> 'html':
     # provide the name of the template, and the value to go with the_title
     return render_template('index.html', the_title="Welcome to Brian's zone!")
+
+
+@app.route('/blog_pages/built_in_modules')
+def build_page(category='built_in_modules'):
+    page_to_render = 'blog_pages/'+category+'.html'
+    return render_template(page_to_render)
 
 
 # app.run()
